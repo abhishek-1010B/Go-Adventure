@@ -1,0 +1,56 @@
+/* Navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.navbar-left {
+    display: flex;
+}
+
+.nav-btn {
+    margin-right: 10px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    /* Adjust font size here */
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+/* Your Purchases section styles */
+.your-purchases {
+    padding: 20px;
+}
+
+.your-purchases h2 {
+    color: #333;
+}
+
+/* Logout button styles */
+.logout-btn {
+    padding: 10px 20px;
+    background-color: red;
+    /* Change color to red */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+    margin-right: 20px;
+    /* Add right margin */
+}

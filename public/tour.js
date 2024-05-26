@@ -7,32 +7,31 @@ let menu = document.querySelector('#menu-bar');
 let navbar = document.querySelector('.navbar');
 let videoBtn = document.querySelectorAll('.vid-btn');
 
-window.onscroll = () => {
-    searchBtn.classList.remove('fa-times');
-    searchBar.classList.remove('active');
-    menu.classList.remove('fa-times');
-    navbar.classList.remove('active');
-    loginForm.classList.remove('active')
-}
-
-menu.addEventListener('click', () =>{
-    menu.classList.toggle('fa-times');
-    navbar.classList.toggle('active');
+window.addEventListener('scroll', () => {
+  searchBtn.classList.remove('fa-times');
+  searchBar.classList.remove('active');
+  menu.classList.remove('fa-times');
+  navbar.classList.remove('active');
+  loginForm.classList.remove('active');
 });
 
-searchBtn.addEventListener('click', () =>{
-    searchBtn.classList.toggle('fa-times');
-    searchBar.classList.toggle('active');
+menu.addEventListener('click', () => {
+  menu.classList.toggle('fa-times');
+  navbar.classList.toggle('active');
 });
 
-formBtn.addEventListener('click', () =>{
-    loginForm.classList.add('active');
+searchBtn.addEventListener('click', () => {
+  searchBar.classList.toggle('active'); 
 });
 
-formClose.addEventListener('click', () =>{
-    loginForm.classList.remove('active');
+formBtn.addEventListener('click', () => {
+  loginForm.classList.add('active');
 });
-    
+
+formClose.addEventListener('click', () => {
+  loginForm.classList.remove('active');
+});
+  
 videoBtn.forEach(btn =>{
     btn.addEventListener('click', ()=>{
         document.querySelector('.controls .active').classList.remove('active');
@@ -42,48 +41,84 @@ videoBtn.forEach(btn =>{
     });
 });
 
-var swiper = new Swiper(".review-slider", {
-    spaceBetween: 20,
-    loop:true,
-    autoplay: {
-        delay: 1000,
-        disableOnInteraction: false,
-    },
-    breakpoints: {
-        640: {
-            slidesPerView: 1,
-        },
-        768: {
-            slidesPerView: 2,
-        },
-        1024: {
-            slidesPerView: 3,
-        },
-    },
+const resultsContainer = document.getElementById('search-results');
+
+searchBtn.addEventListener('click', async () => { 
+  const searchQuery = searchBar.value.trim().toLowerCase();
+
+  if (searchQuery) {
+    try {
+      const response = await fetch('/search', { 
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query: searchQuery })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.statusText}`);
+      }
+
+      const searchResults = await response.json();
+      displaySearchResults(searchResults); 
+    } catch (error) {
+      console.error('Error fetching search results:', error);
+      
+    }
+  }
 });
 
+function displaySearchResults(results) {
+  resultsContainer.innerHTML = ''; 
+
+  if (results.length > 0) {
+    const resultList = document.createElement('ul'); 
+    for (const result of results) {
+      const listItem = document.createElement('li');
+      listItem.textContent = result.title || result.content; 
+      resultList.appendChild(listItem);
+    }
+    resultsContainer.appendChild(resultList);
+  } else {
+    resultsContainer.textContent = 'No results found.';
+  }
+}
+// Swiper Initialization for brand-slider
 var swiper = new Swiper(".brand-slider", {
-    spaceBetween: 20,
-    loop:true,
-    autoplay: {
-        delay: 1000,
-        disableOnInteraction: false,
-    },
-    breakpoints: {
-        450: {
-            slidesPerView: 2,
-        },
-        768: {
-            slidesPerView: 3,
-        },
-        991:{
-            slidesPerView: 4,
-        },
-        1200:{
-           slidesPerView: 5,
-        },
-    },
+  spaceBetween: 20,
+  loop: true,
+  autoplay: {
+    delay: 1000,
+    disableOnInteraction: false,
+  },
+  breakpoints: {
+    450: { slidesPerView: 2 },
+    768: { slidesPerView: 3 },
+    991: { slidesPerView: 4 },
+    1200: { slidesPerView: 5 },
+  },
 });
+
+
+var swiper = new Swiper(".review-slider", {
+  spaceBetween: 20,
+  loop: true,
+  autoplay: {
+    delay: 3000, 
+    disableOnInteraction: false,
+  },
+  breakpoints: {
+    640: {
+      slidesPerView: 1,
+    },
+    768: {
+      slidesPerView: 2,
+    },
+    1024: {
+      slidesPerView: 3,
+    },
+  },
+});
+
 
 document.addEventListener("DOMContentLoaded", function () {
   const contactForm = document.getElementById("contact-form");
@@ -131,45 +166,46 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // User Signup Form Submission
   loginForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const formData = new FormData(loginForm);
-    const formObj = Object.fromEntries(formData.entries());
+  const formData = new FormData(loginForm);
+  const formObj = Object.fromEntries(formData.entries());
 
-    try {
-      const response = await fetch("/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formObj),
-      });
+  try {
+    const response = await fetch("/login", { 
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formObj),
+    });
 
-      if (response.ok) {
-        openPopup("Login successful!");
-        loginForm.reset();
-        // Navigate to packages.html after closing the popup
-        document
-          .getElementById("popup")
-          .querySelector("button")
-          .addEventListener("click", () => {
-            window.location.href = "/packages.html";
-          });
-      } else {
-        // Change the alert to a prompt with a signup button
-        if (
-          confirm("Invalid username or password. Would you like to sign up?")
-        ) {
+    if (response.ok) {
+      openPopup("Login successful!");
+      loginForm.reset();
+
+      document.getElementById("popup").querySelector("button").addEventListener("click", () => {
+          window.location.href = "/packages.html";
+        });
+    } else {
+      const errorData = await response.json(); 
+
+      if (errorData.error === "Invalid username or password") { 
+        if (confirm("Invalid credentials. Would you like to sign up?")) {
           window.location.href = "/signup.html";
         }
+      } else {
+        console.error("Unknown login error:", errorData); 
+        alert("Login failed. Please try again."); 
       }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("Login failed. Please try again.");
     }
-  });
+  } catch (error) {
+    console.error("Error:", error);
+    alert("Login failed. Please try again.");
+  }
+});
+
 
   // Book Form Submission
   bookForm.addEventListener("submit", async (e) => {

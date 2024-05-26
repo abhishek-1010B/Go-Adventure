@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,66 +8,71 @@
     <title>Go-Adventure</title>
     <link rel="stylesheet" href="tour.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700&family=Nunito:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
 </head>
+
 <body>
     <header>
         <div id="menu-bar" class="fas fa-bars"></div>
-       <a href="#" class="logo"><span>Go</span>Adventure</a>
+        <a href="#" class="logo"><span>Go</span>Adventure</a>
 
-       <nav class="navbar">
-        <a href="#home">home</a>
-        <a href="#book">book</a>
-        <a href="#packages">packages</a>
-        <a href="#services">services</a>
-        <a href="#gallery">gallery</a>
-        <a href="#review">review</a>
-        <a href="#contact">contact</a>
-       </nav>
+        <nav class="navbar">
+            <a href="#home">home</a>
+            <a href="#book">book</a>
+            <a href="#packages">packages</a>
+            <a href="#services">services</a>
+            <a href="#gallery">gallery</a>
+            <a href="#review">review</a>
+            <a href="#contact">contact</a>
+        </nav>
 
-       <div class="icons">
+        <div class="icons">
         <i class="fas fa-search" id="search-btn"></i>
         <i class="fas fa-user" id="login-btn"></i>
-       </div>
 
-       <form action="#" class="search-bar-container">
-        <input type="search" id="search-bar" placeholder="search here.....">
-        <label for="search-bar" class="fas fa-search"></label>
-       </form>
+        </div>
+
+        <form action="#" class="search-bar-container">
+            <input type="search" id="search-bar" placeholder="search here.....">
+            <label for="search-bar" class="fas fa-search"></label>
+        </form>
 
     </header>
-    
+
     <div class="login-form-container">
 
         <i class="fas fa-times" id="form-close"></i>
 
-    <!-- //User Section. (Collection Name : users) -->
-    <form id="login-form" action="/login" method="POST" onsubmit="submitForm(event)">
-        <h3>Login</h3>
-        <div class="inputBox">
-            <label for="email">Username</label>
-            <input type="text" name="text" id="text" class="box" placeholder="Enter your username" required>
+        <!-- //User Section. (Collection Name : users) -->
+        <form id="login-form" action="/login" method="POST" onsubmit="submitForm(event)">
+            <h3>Login</h3>
+            <div class="inputBox">
+                <label for="email">Username</label>
+                <input type="text" name="username" id="usernme" class="box" placeholder="Enter your username" required>
+            </div>
+            <div class="inputBox">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" class="box" placeholder="Enter your password"
+                    required>
+            </div>
+            <input type="submit" value="Login Now" class="btn">
+        </form>
+
+        <div class="popup" id="popup">
+            <img src="Images/404-tick.png" alt="404-tick">
+            <h2>Thank You</h2>
+            <p>Your details has been sent. Our team will connect with you shortly!</p>
+            <button type="button" onclick="closePopup()">OK</button>
         </div>
-        <div class="inputBox">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" class="box" placeholder="Enter your password" required>
-        </div>
-        <input type="submit" value="Login Now" class="btn">
-    </form>
-    
-    <div class="popup" id="popup">
-        <img src="Images/404-tick.png" alt="404-tick">
-        <h2>Thank You</h2>
-        <p>Your details has been sent. Our team will connect with you shortly!</p>
-        <button type="button" onclick="closePopup()">OK</button>
-    </div>
 
 
 
     </div>
-<!--home section start-->
+    <!--home section start-->
     <section class="home" id="home">
-        
+
         <div class="content">
             <h3>adventure is worthwhile</h3>
             <p>discover new places with us, adventure awaits</p>
@@ -88,319 +94,60 @@
 
     </section>
 
-<!--home section ends-->
+    <!--home section ends-->
 
-<!--book section starts-->
-<section class="book" id="book">
-    <h1 class="heading">
-        <span>b</span>
-        <span>o</span>
-        <span>o</span>
-        <span>k</span>
-        <span class="space"></span>
-        <span>n</span>
-        <span>o</span>
-        <span>w</span>
-    </h1>
-    <div class="row">
-        <div class="image">
-            <img src="Images/book-img.png" alt="book-img" loading="lazy">
-        </div>
-        <!-- //Arrival Section. (Collection Name : arrivals) -->
-        <form id="book-form">
-            <div class="inputBox">
-                <input type="text" name="to" id="to" placeholder="Where to" required>
-                <input type="number" name="howMany" id="howMany" placeholder="How Many" required>
+    <!--book section starts-->
+    <section class="book" id="book">
+        <h1 class="heading">
+            <span>b</span>
+            <span>o</span>
+            <span>o</span>
+            <span>k</span>
+            <span class="space"></span>
+            <span>n</span>
+            <span>o</span>
+            <span>w</span>
+        </h1>
+        <div class="row">
+            <div class="image">
+                <img src="Images/book-img.png" alt="book-img" loading="lazy">
             </div>
-            <div class="inputBox">
-                <input type="date" name="arrivalDate" id="arrivalDate" placeholder="Arrival Date" required>
-                <input type="date" name="leavingDate" id="leavingDate" placeholder="Leaving Date" required>
-            </div>
-            <input type="submit" class="btn" value="Book Now">
-        </form>
+            <!-- //Arrival Section. (Collection Name : arrivals) -->
+            <form id="book-form">
+                <div class="inputBox">
+                    <input type="text" name="to" id="to" placeholder="Where to" required>
+                    <input type="number" name="howMany" id="howMany" placeholder="How Many" required>
+                </div>
+                <div class="inputBox">
+                    <input type="date" name="arrivalDate" id="arrivalDate" placeholder="Arrival Date" required>
+                    <input type="date" name="leavingDate" id="leavingDate" placeholder="Leaving Date" required>
+                </div>
+                <input type="submit" class="btn" value="Book Now">
+            </form>
 
-    </div>
-</section>
-<!--book section ends-->
-<!--packages section start-->
-<section class="packages" id="packages">
-    <h1 class="heading">
-        <span>p</span>
-        <span>a</span>
-        <span>c</span>
-        <span>k</span>
-        <span>a</span>
-        <span>g</span>
-        <span>e</span>
-        <span>s</span>
-    </h1>
-    <div class="box-container">
-        <div class="box">
-            <img src="Images/p-1.jpg" alt="p-1" loading="lazy">
-            <div class="content">
-                <h3>
-                    <i class="fas fa-map-marker-alt"></i> mumbai
-                </h3>
-                <p>View more</p>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <div class="price">$90.00 <span>$120.00</span>
-                </div>
-                <a href="#" class="btn">book now</a>
-            </div>
         </div>
-        <div class="box">
-            <img src="Images/p-2.jpg" alt="p-2" loading="lazy">
-            <div class="content">
-                <h3>
-                    <i class="fas fa-map-marker-alt"></i>hwaii
-                </h3>
-                <p>View more</p>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <div class="price">$90.00 <span>$120.00</span>
-                </div>
-                <a href="#" class="btn">book now</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="Images/p-3.jpg" alt="p-3" loading="lazy">
-            <div class="content">
-                <h3>
-                    <i class="fas fa-map-marker-alt"></i>Sydney
-                </h3>
-                <p>View more</p>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <div class="price">$90.00 <span>$120.00</span>
-                </div>
-                <a href="#" class="btn">book now</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="Images/p-4.jpg" alt="p-4" loading="lazy">
-            <div class="content">
-                <h3>
-                    <i class="fas fa-map-marker-alt"></i> paris
-                </h3>
-                <p>View more</p>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <div class="price">$90.00 <span>$120.00</span>
-                </div>
-                <a href="#" class="btn">book now</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="Images/p-5.jpg" alt="p-5" loading="lazy">
-            <div class="content">
-                <h3>
-                    <i class="fas fa-map-marker-alt"></i> tokyo
-                </h3>
-                <p>View more</p>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <div class="price">$90.00 <span>$120.00</span>
-                </div>
-                <a href="#" class="btn">book now</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="Images/p-6.jpg" alt="p-6" loading="lazy">
-            <div class="content">
-                <h3>
-                    <i class="fas fa-map-marker-alt"></i>Egypt
-                </h3>
-                <a href=""><p>View more</p></a>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <div class="price">$90.00 <span>$120.00</span>
-                </div>
-                <a href="#" class="btn">book now</a>
-            </div>
-        </div>
-</section>
-<!--packages section end-->
-<!-- services section start-->
-<section class="services" id="services">
-    <h1 class="heading">
-        <span>s</span>
-        <span>e</span>
-        <span>r</span>
-        <span>v</span>
-        <span>i</span>
-        <span>c</span>
-        <span>e</span>
-        <span>s</span>
-    </h1>
-    <div class="box-container">
-        <div class="box">
-            <i class="fas fa-hotel"> </i>
-            <h3>affordable hotels</h3>
-            <p><a href="https://www.booking.com/" target="_blank">Click here to Book</a></p>
-        </div>
-        <div class="box">
-            <i class="fas fa-utensils"></i>
-            <h3>food and drinks</h3>
-            <p><a href="https://www.zomato.com/india" target="_blank">Click here</a></p>
-        </div>
-        <div class="box">
-            <i class="fas fa-bullhorn"></i>
-            <h3>safety guide</h3>
-            <p><a href="https://www.nationwide.com/" target="_blank"> Click here</a></p>
-        </div>
-        <div class="box">
-            <i class="fas fa-globe-asia"></i>
-            <h3>around the world</h3>
-            <p><a href="https://himachaltourism.gov.in/" target="_blank"> Click here</a></p>
-        </div>
-        <div class="box">
-            <i class="fas fa-plane"></i>
-            <h3>fastest travel</h3>
-            <p><a href="https://www.farecompare.com/flights/Jet_Airways-9W/airline.html?utm_source=google&utm_medium=cpc&utm_campaign=dsa_in&utm_term=&gad=1&gclid=EAIaIQobChMIkJ_h5erp_gIVzo5LBR1vkQG0EAAYASAAEgIILvD_BwE" target="_blank">Click here</a></p>
-        </div>
-        <div class="box">
-            <i class="fas fa-hiking"></i>
-            <h3>adventures</h3>
-            <p><a href="https://www.eodindia.com/" target="_blank">Click here</a></p>
-        </div>
-    </div>
-</section>
-<!-- services section end-->
-<!--gallery section start-->
-<section class="gallery" id="gallery">
-    <h1 class="heading">
-        <span>g</span>
-        <span>a</span>
-        <span>l</span>
-        <span>l</span>
-        <span>e</span>
-        <span>r</span>
-        <span>y</span>
-    </h1>
-    <div class="box-container">
-        <div class="box">
-            <img src="Images/g-1.jpg" alt="g-1" loading="lazy">
-            <div class="content">
-                <h3>amzing places</h3>
-                <p>View moreum dolor si</p>
-                <a href="#" class="btn">see more</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="Images/g-2.jpg" alt="g-2" loading="lazy">
-            <div class="content">
-                <h3>amzing places</h3>
-                <p>View moreum dolor si</p>
-                <a href="#" class="btn">see more</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="Images/g-3.jpg" alt="g-3" loading="lazy">
-            <div class="content">
-                <h3>amzing places</h3>
-                <p>View moreum dolor si</p>
-                <a href="#" class="btn">see more</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="Images/g-4.jpg" alt="g-4">
-            <div class="content">
-                <h3>amzing places</h3>
-                <p>View moreum dolor si</p>
-                <a href="#" class="btn">see more</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="Images/g-5.jpg" alt="g-5" loading="lazy">
-            <div class="content">
-                <h3>amzing places</h3>
-                <p>View moreum dolor si</p>
-                <a href="#" class="btn">see more</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="Images/g-6.jpg" alt="g-6" loading="lazy">
-            <div class="content">
-                <h3>amzing places</h3>
-                <p>View moreum dolor si</p>
-                <a href="#" class="btn">see more</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="Images/g-7.jpg" alt="g-7" loading="lazy">
-            <div class="content">
-                <h3>amzing places</h3>
-                <p>View moreum dolor si</p>
-                <a href="#" class="btn">see more</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="Images/g-8.jpg" alt="g-8" loading="lazy">
-            <div class="content">
-                <h3>amzing places</h3>
-                <p>View moreum dolor si</p>
-                <a href="#" class="btn">see more</a>
-            </div>
-        </div>
-        <div class="box">
-            <img src="Images/g-9.jpg" alt="g-9">
-            <div class="content">
-                <h3>amzing places</h3>
-                <p>View moreum dolor si</p>
-                <a href="https://en.wikipedia.org/wiki/Taj_Mahal" class="btn">see more</a>
-            </div>
-        </div>
-    </div>
-</section>
-<!--gallery section end-->
-<!--review section start-->
-<section class="review" id="review">
-    <h1 class="heading">
-        <span>r</span>
-        <span>e</span>
-        <span>v</span>
-        <span>i</span>
-        <span>e</span>
-        <span>w</span>
-    </h1>
-    <div class="swiper review-slider">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <div class="box">
-                    <img src="Images/pic1.jpg" alt="pic-1" loading="lazy">
-                    <h3>Anmol</h3>
-                    <p> View moreum dolor sit amet consectetur adipisicing elit. Nostrum exercitationem, vitae magnam saepe voluptates quis excepturi reprehenderit, illum beatae officiis ne </p>
+    </section>
+    <!--book section ends-->
+    <!--packages section start-->
+    <section class="packages" id="packages">
+        <h1 class="heading">
+            <span>p</span>
+            <span>a</span>
+            <span>c</span>
+            <span>k</span>
+            <span>a</span>
+            <span>g</span>
+            <span>e</span>
+            <span>s</span>
+        </h1>
+        <div class="box-container">
+            <div class="box">
+                <img src="Images/p-1.jpg" alt="p-1" loading="lazy">
+                <div class="content">
+                    <h3>
+                        <i class="fas fa-map-marker-alt"></i> mumbai
+                    </h3>
+                    <p>View more</p>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -408,13 +155,18 @@
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
                     </div>
+                    <div class="price">$90.00 <span>$120.00</span>
+                    </div>
+                    <a href="#" class="btn">book now</a>
                 </div>
             </div>
-            <div class="swiper-slide">
-                <div class="box">
-                    <img src="Images/pic2.jpg" alt="pic-2" loading="lazy">
-                    <h3>Abhishek</h3>
-                    <p> View moreum dolor sit amet consectetur adipisicing elit. Nostrum exercitationem, vitae magnam saepe voluptates quis excepturi reprehenderit, illum beatae officiis nemo soluta nisi voluptas ab laboriosam doloremque! Nulla, atque quia. </p>
+            <div class="box">
+                <img src="Images/p-2.jpg" alt="p-2" loading="lazy">
+                <div class="content">
+                    <h3>
+                        <i class="fas fa-map-marker-alt"></i>hwaii
+                    </h3>
+                    <p>View more</p>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -422,13 +174,18 @@
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
                     </div>
+                    <div class="price">$90.00 <span>$120.00</span>
+                    </div>
+                    <a href="#" class="btn">book now</a>
                 </div>
             </div>
-            <div class="swiper-slide">
-                <div class="box">
-                    <img src="Images/pic3.jpg" alt="pic-3" loading="lazy">
-                    <h3>John</h3>
-                    <p> View moreum dolor sit amet consectetur adipisicing elit. Nostrum exercitationem, vitae magnam saepe voluptates quis excepturi reprehenderit, illum beatae officiis nemo soluta nisi voluptas ab laboriosam doloremque! Nulla, atque quia. </p>
+            <div class="box">
+                <img src="Images/p-3.jpg" alt="p-3" loading="lazy">
+                <div class="content">
+                    <h3>
+                        <i class="fas fa-map-marker-alt"></i>Sydney
+                    </h3>
+                    <p>View more</p>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -436,13 +193,18 @@
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
                     </div>
+                    <div class="price">$90.00 <span>$120.00</span>
+                    </div>
+                    <a href="#" class="btn">book now</a>
                 </div>
             </div>
-            <div class="swiper-slide">
-                <div class="box">
-                    <img src="Images/pic4.jpg" alt="pic-4" loading="lazy">
-                    <h3>Downey</h3>
-                    <p> View moreum dolor sit amet consectetur adipisicing elit. Nostrum exercitationem, vitae magnam saepe voluptates quis excepturi reprehenderit, illum beatae officiis nemo soluta nisi voluptas ab laboriosam doloremque! Nulla, atque quia. </p>
+            <div class="box">
+                <img src="Images/p-4.jpg" alt="p-4" loading="lazy">
+                <div class="content">
+                    <h3>
+                        <i class="fas fa-map-marker-alt"></i> paris
+                    </h3>
+                    <p>View more</p>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -450,89 +212,326 @@
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
                     </div>
+                    <div class="price">$90.00 <span>$120.00</span>
+                    </div>
+                    <a href="#" class="btn">book now</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="Images/p-5.jpg" alt="p-5" loading="lazy">
+                <div class="content">
+                    <h3>
+                        <i class="fas fa-map-marker-alt"></i> tokyo
+                    </h3>
+                    <p>View more</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <div class="price">$90.00 <span>$120.00</span>
+                    </div>
+                    <a href="#" class="btn">book now</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="Images/p-6.jpg" alt="p-6" loading="lazy">
+                <div class="content">
+                    <h3>
+                        <i class="fas fa-map-marker-alt"></i>Egypt
+                    </h3>
+                    <a href="">
+                        <p>View more</p>
+                    </a>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <div class="price">$90.00 <span>$120.00</span>
+                    </div>
+                    <a href="#" class="btn">book now</a>
+                </div>
+            </div>
+    </section>
+    <!--packages section end-->
+    <!-- services section start-->
+    <section class="services" id="services">
+        <h1 class="heading">
+            <span>s</span>
+            <span>e</span>
+            <span>r</span>
+            <span>v</span>
+            <span>i</span>
+            <span>c</span>
+            <span>e</span>
+            <span>s</span>
+        </h1>
+        <div class="box-container">
+            <div class="box">
+                <i class="fas fa-hotel"> </i>
+                <h3>affordable hotels</h3>
+                <p><a href="https://www.booking.com/" target="_blank">Click here to Book</a></p>
+            </div>
+            <div class="box">
+                <i class="fas fa-utensils"></i>
+                <h3>food and drinks</h3>
+                <p><a href="https://www.zomato.com/india" target="_blank">Click here</a></p>
+            </div>
+            <div class="box">
+                <i class="fas fa-bullhorn"></i>
+                <h3>safety guide</h3>
+                <p><a href="https://www.nationwide.com/" target="_blank"> Click here</a></p>
+            </div>
+            <div class="box">
+                <i class="fas fa-globe-asia"></i>
+                <h3>around the world</h3>
+                <p><a href="https://himachaltourism.gov.in/" target="_blank"> Click here</a></p>
+            </div>
+            <div class="box">
+                <i class="fas fa-plane"></i>
+                <h3>fastest travel</h3>
+                <p><a href="https://www.farecompare.com/flights/Jet_Airways-9W/airline.html?utm_source=google&utm_medium=cpc&utm_campaign=dsa_in&utm_term=&gad=1&gclid=EAIaIQobChMIkJ_h5erp_gIVzo5LBR1vkQG0EAAYASAAEgIILvD_BwE"
+                        target="_blank">Click here</a></p>
+            </div>
+            <div class="box">
+                <i class="fas fa-hiking"></i>
+                <h3>adventures</h3>
+                <p><a href="https://www.eodindia.com/" target="_blank">Click here</a></p>
+            </div>
+        </div>
+    </section>
+    <!-- services section end-->
+    <!--gallery section start-->
+    <section class="gallery" id="gallery">
+        <h1 class="heading">
+            <span>g</span>
+            <span>a</span>
+            <span>l</span>
+            <span>l</span>
+            <span>e</span>
+            <span>r</span>
+            <span>y</span>
+        </h1>
+        <div class="box-container">
+            <div class="box">
+                <img src="Images/g-1.jpg" alt="g-1" loading="lazy">
+                <div class="content">
+                    <h3>amzing places</h3>
+                    <p>View moreum dolor si</p>
+                    <a href="#" class="btn">see more</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="Images/g-2.jpg" alt="g-2" loading="lazy">
+                <div class="content">
+                    <h3>amzing places</h3>
+                    <p>View moreum dolor si</p>
+                    <a href="#" class="btn">see more</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="Images/g-3.jpg" alt="g-3" loading="lazy">
+                <div class="content">
+                    <h3>amzing places</h3>
+                    <p>View moreum dolor si</p>
+                    <a href="#" class="btn">see more</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="Images/g-4.jpg" alt="g-4">
+                <div class="content">
+                    <h3>amzing places</h3>
+                    <p>View moreum dolor si</p>
+                    <a href="#" class="btn">see more</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="Images/g-5.jpg" alt="g-5" loading="lazy">
+                <div class="content">
+                    <h3>amzing places</h3>
+                    <p>View moreum dolor si</p>
+                    <a href="#" class="btn">see more</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="Images/g-6.jpg" alt="g-6" loading="lazy">
+                <div class="content">
+                    <h3>amzing places</h3>
+                    <p>View moreum dolor si</p>
+                    <a href="#" class="btn">see more</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="Images/g-7.jpg" alt="g-7" loading="lazy">
+                <div class="content">
+                    <h3>amzing places</h3>
+                    <p>View moreum dolor si</p>
+                    <a href="#" class="btn">see more</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="Images/g-8.jpg" alt="g-8" loading="lazy">
+                <div class="content">
+                    <h3>amzing places</h3>
+                    <p>View moreum dolor si</p>
+                    <a href="#" class="btn">see more</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="Images/g-9.jpg" alt="g-9">
+                <div class="content">
+                    <h3>amzing places</h3>
+                    <p>View moreum dolor si</p>
+                    <a href="https://en.wikipedia.org/wiki/Taj_Mahal" class="btn">see more</a>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<!--review section end-->
-<!--contact section start-->
-<section class="contact" id="contact">
-    <h1 class="heading">
-        <span>c</span>
-        <span>o</span>
-        <span>n</span>
-        <span>t</span>
-        <span>a</span>
-        <span>c</span>
-        <span>t</span>
-    </h1>
-    <div class="row">
-        <div class="image">
-            <img src="Images/contact.jpg" alt="contact" loading="lazy">
+    </section>
+    <!--gallery section end-->
+    <!--review section start-->
+    <section class="review" id="review">
+        <h1 class="heading">
+            <span>r</span>
+            <span>e</span>
+            <span>v</span>
+            <span>i</span>
+            <span>e</span>
+            <span>w</span>
+        </h1>
+        <div class="swiper review-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="Images/pic1.jpg" alt="pic-1" loading="lazy">
+                        <h3>Anmol</h3>
+                        <p> View moreum dolor sit amet consectetur adipisicing elit. Nostrum exercitationem, vitae
+                            magnam saepe voluptates quis excepturi reprehenderit, illum beatae officiis ne </p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="Images/pic2.jpg" alt="pic-2" loading="lazy">
+                        <h3>Abhishek</h3>
+                        <p> View moreum dolor sit amet consectetur adipisicing elit. Nostrum exercitationem, vitae
+                            magnam saepe voluptates quis excepturi reprehenderit, illum beatae officiis nemo soluta nisi
+                            voluptas ab laboriosam doloremque! Nulla, atque quia. </p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="Images/pic3.jpg" alt="pic-3" loading="lazy">
+                        <h3>John</h3>
+                        <p> View moreum dolor sit amet consectetur adipisicing elit. Nostrum exercitationem, vitae
+                            magnam saepe voluptates quis excepturi reprehenderit, illum beatae officiis nemo soluta nisi
+                            voluptas ab laboriosam doloremque! Nulla, atque quia. </p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="Images/pic4.jpg" alt="pic-4" loading="lazy">
+                        <h3>Downey</h3>
+                        <p> View moreum dolor sit amet consectetur adipisicing elit. Nostrum exercitationem, vitae
+                            magnam saepe voluptates quis excepturi reprehenderit, illum beatae officiis nemo soluta nisi
+                            voluptas ab laboriosam doloremque! Nulla, atque quia. </p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--review section end-->
+    <!--contact section start-->
+    <section class="contact" id="contact">
+        <h1 class="heading">
+            <span>c</span>
+            <span>o</span>
+            <span>n</span>
+            <span>t</span>
+            <span>a</span>
+            <span>c</span>
+            <span>t</span>
+        </h1>
+        <div class="row">
+            <div class="image">
+                <img src="Images/contact.jpg" alt="contact" loading="lazy">
+            </div>
+
+            <!-- //Contact Section. (Collection Name : Contact) -->
+            <form id="contact-form" class="contact-form" action="/contact" method="POST">
+                <div class="inputBox">
+                    <input type="text" name="name" id="name" placeholder="Name" required>
+                    <input type="email" name="email" id="email" placeholder="Email" required>
+                </div>
+                <div class="inputBox">
+                    <input type="text" name="number" id="number" placeholder="Contact Number" required>
+                    <input type="text" name="subject" id="subject" placeholder="Subject" required>
+                </div>
+                <textarea name="message" id="message" placeholder="Message" cols="30" rows="10"></textarea>
+                <input type="submit" class="btn" value="Send Message" id="submit">
+                <div class="popup" id="contact-popup">
+                    <img src="Images/404-tick.png" alt="404-tick">
+                    <h2>Thank You</h2>
+                    <p>Your message has been sent. We will reach back to you shortly!</p>
+                    <button type="button" onclick="closeContactPopup()">OK</button>
+                </div>
+            </form>
         </div>
 
-        <!-- //Contact Section. (Collection Name : Contact) -->
-        <form id="contact-form" class="contact-form" action="/contact" method="POST">
-            <div class="inputBox">
-                <input type="text" name="name" id="name" placeholder="Name" required>
-                <input type="email" name="email" id="email" placeholder="Email" required>
-            </div>
-            <div class="inputBox">
-                <input type="text" name="number" id="number" placeholder="Contact Number" required>
-                <input type="text" name="subject" id="subject" placeholder="Subject" required>
-            </div>
-            <textarea name="message" id="message" placeholder="Message" cols="30" rows="10"></textarea>
-            <input type="submit" class="btn" value="Send Message" id="submit">
-            <div class="popup" id="contact-popup">
-                <img src="Images/404-tick.png" alt="404-tick">
-                <h2>Thank You</h2>
-                <p>Your message has been sent. We will reach back to you shortly!</p>
-                <button type="button" onclick="closeContactPopup()">OK</button>
-            </div>
-        </form> 
+
+
         </div>
-
-
-
-    </div>
-</section>
-<!--contact section end-->
-<!--brand section -->
-<section class="brand-container">
-    <div class="swiper brand-slider">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <img src="Images/1.png" alt="Image-1" loading="lazy">
-            </div>
-            <div class="swiper-slide">
-                <img src="Images/2.png" alt="Image-2" loading="lazy">
-            </div>
-            <div class="swiper-slide">
-                <img src="Images/3.png" alt="Image-3" loading="lazy">
-            </div>
-            <div class="swiper-slide">
-                <img src="Images/4.png" alt="Image-4" loading="lazy">
-            </div>
-            <div class="swiper-slide">
-                <img src="Images/5.png" alt="Image-5" loading="lazy">
-            </div>
-            <div class="swiper-slide">
-                <img src="Images/6.png" alt="Image-6" loading="lazy">
+    </section>
+    <!--contact section end-->
+    <!-- Brand Section -->
+    <section class="brand-container">
+        <div class="swiper brand-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="Images/1.png" alt="Image-1" loading="lazy"></div>
+                <div class="swiper-slide"><img src="Images/2.png" alt="Image-2" loading="lazy"></div>
+                <div class="swiper-slide"><img src="Images/3.png" alt="Image-3" loading="lazy"></div>
+                <div class="swiper-slide"><img src="Images/4.png" alt="Image-4" loading="lazy"></div>
+                <div class="swiper-slide"><img src="Images/5.png" alt="Image-5" loading="lazy"></div>
+                <div class="swiper-slide"><img src="Images/6.png" alt="Image-6" loading="lazy"></div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <!-- Scripts -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="tour.js"></script>
 
 </body>
-</html>
 
-<!-- 
-// Things needed to be added are - 
-1. After sign in process - show  user name and previous/ present packages they have and estimated cost--
-Input field for entering mail to share there location details for there family-
-2. Add and make some user interaction on buttons (services, gallery , review section , ->
+</html>

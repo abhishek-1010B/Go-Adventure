@@ -6,13 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Go-Adventure</title>
     <link rel="stylesheet" href="tour.css">
+    <style>
+        /* Added styles for the navbar */
+        .navbar {
+            background-color: black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            color: white;
+        }
+
+        .navbar-left a {
+            margin-right: 1rem;
+            color: white;
+            text-decoration: none;
+        }
+
+        .navbar-left a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-right span {
+            margin-right: 1rem;
+            font-size: 16px;
+        }
+
+        .logout-btn {
+            background-color: #ff4c4c;
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+
+        .logout-btn:hover {
+            background-color: #ff1a1a;
+        }
+
+        a {
+            font-size: 16px;
+        }
+    </style>
 </head>
 
 <body>
     <nav class="navbar">
         <div class="navbar-left">
-            <a href="index.html">HOME</a>
-            <a href="contact.html">CONTACT</a>
+            <a href="index.html">Home</a>
+            <a href="purchase.html">Purchase</a>
         </div>
         <div class="navbar-right">
             <span id="username-display"></span>
@@ -23,11 +70,12 @@
     <section class="packages" id="packages">
         <h1 class="heading">
             <span>p</span>
-            <span>a</span>
+            <span>u</span>
+            <span>r</span>
             <span>c</span>
-            <span>k</span>
+            <span>h</span>
             <span>a</span>
-            <span>g</span>
+            <span>s</span>
             <span>e</span>
             <span>s</span>
         </h1>
@@ -56,18 +104,20 @@
     </section>
 
     <script>
-        // Function to handle logout
+
         function logout() {
-            localStorage.removeItem("username"); // Clear username from localStorage
-            window.location.href = "index.html"; // Redirect to login page
+            localStorage.removeItem("username");
+            window.location.href = "index.html";
         }
 
-        // Display the username in the navbar
+
         document.addEventListener("DOMContentLoaded", function () {
             const usernameDisplay = document.getElementById("username-display");
             const username = localStorage.getItem("username");
             if (username) {
                 usernameDisplay.textContent = `Welcome, ${username}`;
+            } else {
+                usernameDisplay.textContent = `Welcome, Guest`;
             }
         });
     </script>

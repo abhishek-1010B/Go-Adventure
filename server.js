@@ -11,8 +11,8 @@ app.use(express.json());
 app.use(express.static("public"));
 app.use(compression());
 
-const MONGODB_URI =
-  "mongodb+srv://user1:3O7vDOAxCXHxZQWk@cluster0.ugdhsjv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const MONGODB_URI = "mongodb://localhost:27017/test";
+
 mongoose
   .connect(MONGODB_URI, {
     useNewUrlParser: true,
@@ -25,7 +25,6 @@ mongoose
     console.error("MongoDB connection error:", err);
   });
 
-// MongoDB models
 const Contact = mongoose.model("Contact", {
   name: { type: String, required: true },
   email: { type: String, required: true },
@@ -39,6 +38,7 @@ const User = mongoose.model("User", {
   username: { type: String, required: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
+  gender: { type: String, required: true },
 });
 
 const Arrival = mongoose.model("Arrival", {
@@ -49,28 +49,19 @@ const Arrival = mongoose.model("Arrival", {
   createdAt: { type: Date, default: Date.now },
 });
 
-// Serve the index.html file
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
 });
 
-// Cache Control Headers
 app.use((req, res, next) => {
   res.setHeader("Cache-Control", "public, max-age=31536000"); // 1 year
   next();
 });
 
-// Contact Form Submission
 app.post("/contact", async (req, res) => {
   try {
     const { name, email, number, subject, message } = req.body;
-    const newContact = new Contact({
-      name,
-      email,
-      number,
-      subject,
-      message,
-    });
+    const newContact = new Contact({ name, email, number, subject, message });
     await newContact.save();
     res.status(201).send("Contact information saved successfully");
   } catch (error) {
@@ -79,19 +70,14 @@ app.post("/contact", async (req, res) => {
   }
 });
 
-// Serve the signup.html file
-app.get("/signup.html", (req, res) => {
-  res.sendFile(__dirname + "/public/signup.html");
-});
-
-// User Signup
 app.post("/signup", async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const { username, email, password, gender } = req.body;
     const newUser = new User({
       username,
       email,
-      password, // Storing the password in plain text for testing
+      password,
+      gender,
     });
 
     await newUser.save();
@@ -102,39 +88,42 @@ app.post("/signup", async (req, res) => {
   }
 });
 
-// User Authentication
-app.post("/login", async (req, res) => {
+app.post("/login", async (req, res) => {    
   try {
     const { username, password } = req.body;
-    const user = await User.findOne({ username });
-    if (!user || user.password !== password) {
+    // console.log(username,password);
+
+
+    const user = await User.findOne({ username, password }); 
+    if (!user) {
       return res.status(401).json({ error: "Invalid username or password" });
     }
-
-    res
-      .status(200)
-      .json({ message: "Login successful", username: user.username });
+    res.status(200).json({ message: "Login successful", username: user.username });
   } catch (error) {
     console.error("Error during authentication:", error);
     res.status(500).json({ error: "Server error" });
   }
 });
 
-// Book Form Submission
+
 app.post("/book", async (req, res) => {
   try {
     const { to, howMany, arrivalDate, leavingDate } = req.body;
-    const newBooking = new Arrival({
-      to,
-      howMany,
-      arrivalDate,
-      leavingDate,
-    });
+    const newBooking = new Arrival({ to, howMany, arrivalDate, leavingDate });
     await newBooking.save();
     res.status(201).send("Booking saved successfully");
   } catch (error) {
     console.error("Error saving booking:", error);
     res.status(500).send("Server error");
+  }
+});
+
+app.get("/api/user/:id", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 });
 
